@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering Visualization</title>
+</head>
+<body>
+    <h1>KMeans Clustering Visualization</h1>
+    
+    <div>
+        <button id="generate-data">Generate Random Dataset</button>
+    </div>
+    
+    <div>
+        <label for="n_clusters">Number of Clusters:</label>
+        <input type="number" id="n_clusters" name="n_clusters" min="1" value="3">
+        
+        <label for="init_method">Initialization Method:</label>
+        <select id="init_method" name="init_method">
+            <option value="random">Random</option>
+            <option value="farthest_first">Farthest First</option>
+            <option value="kmeans++">KMeans++</option>
+        </select>
+        
+        <button id="run-kmeans">Run KMeans</button>
+    </div>
+    
+    <div>
+        <h2>Clustering Result</h2>
+        <img id="cluster-image" src="" alt="Clustering result will be displayed here.">
+    </div>
+    
+    <script>
+        document.getElementById('generate-data').onclick = function() {
+            fetch('/generate_data', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => alert(data.message))
+                .catch(error => console.error('Error:', error));
+        };
+
+        document.getElementById('run-kmeans').onclick = function() {
+            const n_clusters = document.getElementById('n_clusters').value;
+            const init_method = document.getElementById('init_method').value;
+
+            const formData = new FormData();
+            formData.append('n_clusters', n_clusters);
+            formData.append('init_method', init_method);
+
+            fetch('/run_kmeans', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.image) {
+                    document.getElementById('cluster-image').src = data.image;
+                } else {
+                    alert(data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        };
+    </script>
+</body>
+</html>
