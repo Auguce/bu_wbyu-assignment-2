@@ -15,7 +15,7 @@ This is a dynamic web application that visualizes the KMeans clustering algorith
 ## Demo Video
 For a demonstration of the application's functionality, please watch the video linked below:
 
-[![KMeans Clustering Visualization Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID_HERE)
+[![KMeans Clustering Visualization Demo](https://youtu.be/Y-4Mm76Eyew)](https://youtu.be/Y-4Mm76Eyew)
 
 *(Replace `YOUR_VIDEO_ID_HERE` with the actual video ID after uploading your video to YouTube.)*
 
