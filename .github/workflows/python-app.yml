@@ -1,10 +1,10 @@
-name: Python Flask CI
+name: Python application
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -15,26 +15,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Python 3.8
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.x'
 
     - name: Install dependencies
-      run: make install
-
-    - name: Run the Flask application
       run: |
-        nohup make run &
-        sleep 5
-      # 使用 nohup 和 & 将 Flask 应用程序放入后台运行，并使用 sleep 5 秒确保服务器启动
+        python -m pip install --upgrade pip
+        make install
 
-    - name: Check if server is running
+    - name: Run application
       run: |
-        curl -f http://localhost:3000 || exit 1
-      # 使用 curl 检查服务器是否在运行，如果未运行则失败
-
-    - name: Shutdown Flask application
-      run: |
-        pkill -f "python app.py" || true
-      # 关闭 Flask 应用程序
+        make run &
+        sleep 10  # Wait for the server to start
+        curl -v http://localhost:3000  # Verify server is running
