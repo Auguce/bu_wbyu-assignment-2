@@ -6,5 +6,4 @@ install:
 
 run:
 	@echo "Running the Flask application..."
-	MPLCONFIGDIR=./ python app.py
-
+	python app.py
