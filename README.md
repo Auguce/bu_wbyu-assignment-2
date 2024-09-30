@@ -17,8 +17,6 @@ For a demonstration of the application's functionality, please watch the video l
 
 [![KMeans Clustering Visualization Demo](https://youtu.be/Y-4Mm76Eyew)](https://youtu.be/Y-4Mm76Eyew)
 
-*(Replace `YOUR_VIDEO_ID_HERE` with the actual video ID after uploading your video to YouTube.)*
-
 ## Project Structure
 - `app.py`: The main Flask application that handles routes, clustering operations, and API endpoints.
 - `kmeans.py`: Contains the custom KMeans algorithm implementation, with support for different initialization methods.
