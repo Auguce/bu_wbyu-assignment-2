@@ -166,4 +166,5 @@ def reset_kmeans():
     return jsonify({"message": "KMeans has been reset."})
 
 if __name__ == '__main__':
-    app.run(port=3000, debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
+

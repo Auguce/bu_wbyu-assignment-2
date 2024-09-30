@@ -1,7 +1,9 @@
 # Makefile
 
 install:
-    pip install -r requirements.txt
+	@echo "Installing dependencies..."
+	pip install -r requirements.txt
 
 run:
-    python app.py
+	@echo "Running the Flask application..."
+	python app.py
